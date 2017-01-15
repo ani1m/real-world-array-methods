@@ -1493,14 +1493,7 @@ Use the appropriate array method to figure out, using the hourly
 data, whether there is going to be any rain in the next 24 hours. 
 The method you use should return true or false.
 */
-
-/*var newData = weatherInfo;
-function rain(arr) {
-    
-}
-*/
 var newData = weatherInfo.hourly.data.slice(0, 24);
-
 
 function willItRain(arr) {
    
@@ -1512,3 +1505,28 @@ function willItRain(arr) {
 }
 
 console.log(willItRain(newData));
+
+/* Using a chain of two array methods, figure out if it’s going to rain in the 
+next 8 hours. To do this, you’ll have to start with the hourly data and:
+*/
+
+/*var inEight = weatherInfo.hourly.data.slice(0, 8);
+
+function rainInEight(arr) {
+    return arr.some(function(element){
+        return element.icon === 'rain';
+    });
+}
+console.log(rainInEight(inEight));
+*/
+
+function willItRain8Hours(data) {
+  var isGoingToRain = data.slice(0, 8).findIndex(function(datum) {
+    return datum.summary==="Rain" || datum.summary==="Light Rain";
+  });
+  if (isGoingToRain > 0) {
+    return true;
+  }
+  return false;
+}
+console.log(willItRain8Hours(weatherInfo.hourly.data));

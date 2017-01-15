@@ -1510,7 +1510,7 @@ console.log(willItRain(newData));
 next 8 hours. To do this, you’ll have to start with the hourly data and:
 */
 
-/*var inEight = weatherInfo.hourly.data.slice(0, 8);
+var inEight = weatherInfo.hourly.data.slice(0, 8);
 
 function rainInEight(arr) {
     return arr.some(function(element){
@@ -1518,15 +1518,16 @@ function rainInEight(arr) {
     });
 }
 console.log(rainInEight(inEight));
+
+
+/* Just give me the temperature
+return an array of only the temperatures 
 */
 
-function willItRain8Hours(data) {
-  var isGoingToRain = data.slice(0, 8).findIndex(function(datum) {
-    return datum.summary==="Rain" || datum.summary==="Light Rain";
-  });
-  if (isGoingToRain > 0) {
-    return true;
-  }
-  return false;
+var tempArr = weatherInfo.hourly.data;
+function onlyTemp(arr) {
+    return arr.map(function(temp) {
+        return temp.temperature;
+    });
 }
-console.log(willItRain8Hours(weatherInfo.hourly.data));
+console.log(onlyTemp(tempArr));
